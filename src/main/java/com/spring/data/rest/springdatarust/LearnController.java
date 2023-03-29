@@ -125,7 +125,7 @@ public class LearnController {
         headers.add("Authorization","Zoho-oauthtoken  1000.1afeab33534d7aebbdd210f1fd5ccf68.d791cd802aa4fc37230ba43a3e3aec74");
         headers.add("content-type", "application/json");
         HttpEntity<String> httpEntity=new HttpEntity<>(headers);
-        byte[] psf=restTemplate.exchange("https://www.zohoapis.in/books/v3/invoices/1052625000000533001?accept=pdf&organization_id=60017658212",HttpMethod.GET,httpEntity,byte[].class).getBody();
+        byte[] psf=restTemplate.exchange("https://www.zohoapis.in/books/v3/invoices/{invoice_id}?accept=pdf&organization_id={organization_id}",HttpMethod.GET,httpEntity,byte[].class).getBody();
 
         if(psf==null){
             return null;
@@ -138,4 +138,5 @@ public class LearnController {
         }
         return psf;
     }
+    // testing the git in the local branch
 }
