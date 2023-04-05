@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -144,4 +147,20 @@ public class LearnController {
     //c
     //
 
+    @GetMapping("/clientMan")
+    public Mono<Client> getClientDetailsTwo(){
+      Mono<Client> client= WebClient.create().get().uri("https://jsonplaceholder.typicode.com/posts", Client.class).retrieve().bodyToMono(Client.class);
+      return client;
+    }
+    public static void main(String[] arg){
+        Mono<Client> clientMono= WebClient.create().get().uri("https://jsonplaceholder.typicode.com/posts", Client.class).retrieve().bodyToMono(Client.class);
+        clientMono.subscribe(tweet->log.info(tweet.toString()));
+        System.out.print(clientMono);
+    }
+
+    @GetMapping("/web/test")
+    public Mono<Address> getListOfWebClient(){
+        WebClient webClient=WebClient.create("http://localhost:8080");
+        return webClient.get().uri("/testTwo").exchangeToMono(response-> response.bodyToMono(Address.class));
+    }
 }

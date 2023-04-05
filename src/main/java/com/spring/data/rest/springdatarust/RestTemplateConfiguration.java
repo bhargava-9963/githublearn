@@ -15,7 +15,6 @@ public class RestTemplateConfiguration {
     public RestTemplate getRestTemplate(){
         return new RestTemplateBuilder()
                 .rootUri("http://localhost:8080")
-                .setReadTimeout(Duration.ofNanos(0))
                 .build();
     }
 }
