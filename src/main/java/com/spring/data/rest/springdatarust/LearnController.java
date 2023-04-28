@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,6 +18,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -141,27 +139,5 @@ public class LearnController {
         }
         return psf;
     }
-
-    @GetMapping("/clientMan")
-    public Mono<Client> getClientDetailsTwo(){
-        Mono<Client> client= WebClient.create().get().uri("https://jsonplaceholder.typicode.com/posts", Client.class).retrieve().bodyToMono(Client.class);
-        return client;
-    }
-    public static void main(String[] arg){
-        Mono<Client> clientMono= WebClient.create().get().uri("https://jsonplaceholder.typicode.com/posts", Client.class).retrieve().bodyToMono(Client.class);
-        clientMono.subscribe(tweet->log.info(tweet.toString()));
-        System.out.print(clientMono);
-    }
-
-    @GetMapping("/web/test")
-    public Mono<Address> getListOfWebClient(){
-        WebClient webClient=WebClient.create("http://localhost:8080");
-        return webClient.get().uri("/testTwo").exchangeToMono(response-> response.bodyToMono(Address.class));
-    }
-    // testing the git in the local branch
-    // testing the second commit tool commit
-    //
-    //c
-    //
 
 }
