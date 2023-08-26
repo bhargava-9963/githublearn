@@ -1,6 +1,5 @@
 package com.spring.data.rest.springdatarust;
 
-import com.detectlanguage.errors.APIError;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -17,10 +16,10 @@ import java.util.List;
 @RestController
 public class TextToPdfController {
         @PostMapping("/texToPdf")
-        public ResponseEntity<?> getPdfToTextResponse(@RequestBody PdfToTextDto dto) throws IOException, APIError {
+        public ResponseEntity<?> getPdfToTextResponse(@RequestBody PdfToTextDto dto) throws IOException {
             return ResponseEntity.ok(getTextToPdf(dto));
         }
-        private TextToPdfResponse getTextToPdf(PdfToTextDto dto) throws IOException, APIError {
+        private TextToPdfResponse getTextToPdf(PdfToTextDto dto) throws IOException {
             if(!List.of("en","te","kn","tm","hi").contains(dto.getLang())){
                 return invalidResponse();
             }
