@@ -37,24 +37,26 @@ public class TextToPdfController {
                     return invalidResponse();
                 }
             }
+            String fontPath=dir+"/src/main/resources";
             if(dto.getLang().equals("hi")) { // hindi
                 if(checkLanguage(dto.getContent(), dto.getLang())){
                     return invalidResponse();
                 }
-                fontLanguage = PdfFontFactory.createFont("/Users/bhargavak/Documents/learning/springdatarust/src/main/resources/NotoSans-Regular.ttf");
+
+                fontLanguage = PdfFontFactory.createFont(fontPath+"/NotoSans-Regular.ttf");
                 // NotoSans-Black.ttf
             }
             if(dto.getLang().equals("kn")){ // karnataka
                 if(checkLanguage(dto.getContent(), dto.getLang())){
                     return invalidResponse();
                 }
-                fontLanguage=PdfFontFactory.createFont("/Users/bhargavak/Documents/learning/springdatarust/src/main/resources/NotoSerifKannada-VariableFont_wght.ttf");
+                fontLanguage=PdfFontFactory.createFont(fontPath+"/NotoSerifKannada-VariableFont_wght.ttf");
             }
             if(dto.getLang().equals("te")){ // telugu
                 if(checkLanguage(dto.getContent(), dto.getLang())){
                     return invalidResponse();
                 }
-                fontLanguage=PdfFontFactory.createFont("/Users/bhargavak/Documents/learning/springdatarust/src/main/resources/gautami.ttf");
+                fontLanguage=PdfFontFactory.createFont(fontPath+"/gautami.ttf");
             }
             Paragraph paragraph=new Paragraph();
             paragraph.setFontSize(10);
