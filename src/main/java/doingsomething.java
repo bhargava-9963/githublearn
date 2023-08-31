@@ -6,6 +6,5 @@ class doingsomething {
     // adding commit
     // adding commit 1
     // adding commit 2
-
-
+    // testtwo
 }
