@@ -4,4 +4,6 @@ class doingsomething {
     }
     // addding commit
     // adding commit
+    // adding commit 1
+    // adding commit 2
 }
