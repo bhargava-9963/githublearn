@@ -50,7 +50,7 @@ public class TextToPdfController {
                 if(checkLanguage(dto.getContent(), dto.getLang())){
                     return invalidResponse();
                 }
-                fontLanguage=PdfFontFactory.createFont(fontPath+"/NotoSerifKannada-VariableFont_wght.ttf");
+                fontLanguage=PdfFontFactory.createFont(fontPath+"/Lohit Kannada Regular.ttf");
             }
             if(dto.getLang().equals("te")){ // telugu
                 if(checkLanguage(dto.getContent(), dto.getLang())){
